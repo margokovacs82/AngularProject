@@ -1,0 +1,25 @@
+.title-holder {
+  width: 100%;
+  margin-left: 15%;
+}
+.title-color {
+  max-width: 70%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(209, 249, 249);
+  border-radius: 25px;
+}
+
+.title {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 3%;
+  color: rgb(224, 67, 211);
+  font-size: 250%;
+  background-color: aqua;
+  max-width: fit-content;
+  border-radius: 25px;
+}
+
+//https://css-tricks.com/snippets/css/a-guide-to-flexbox/

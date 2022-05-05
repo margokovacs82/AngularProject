@@ -1,3 +1,9 @@
+### Features
+
+This is a simple application to practice a bit Angular6+.
+It works with in-memory-data service and "saves" the addresses given on the first page and shows them on the second page.
+It is still in progress and will remain in progress for a long time I think - I do it besides my everyday job.
+
 # Angularpetproject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.

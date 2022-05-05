@@ -1,0 +1,47 @@
+<form [formGroup]="addressForm">
+  <div class="address_main">
+    <div class="first_row">
+      <mat-form-field class="formfield" appearance="outline">
+        <mat-label>Vezetéknév</mat-label>
+        <input formControlName="lastName" matInput />
+      </mat-form-field>
+      <mat-form-field class="formfield" appearance="outline">
+        <mat-label>Keresztnév</mat-label>
+        <input formControlName="firstname" matInput />
+      </mat-form-field>
+    </div>
+    <div class="second_row">
+      <mat-form-field class="formfield" appearance="outline">
+        <mat-label>Város</mat-label>
+        <input formControlName="city" matInput />
+      </mat-form-field>
+
+      <mat-form-field class="formfield" appearance="outline">
+        <mat-label>Címsor 1</mat-label>
+        <input formControlName="address1" matInput />
+      </mat-form-field>
+
+      <mat-form-field class="formfield" appearance="outline" title="cím2">
+        <mat-label>Címsor 2</mat-label>
+        <input matInput formControlName="address2" />
+      </mat-form-field>
+    </div>
+    <div class="third_row">
+      <mat-form-field
+        class="formfield"
+        appearance="outline"
+        title="telefonszám "
+      >
+        <mat-label>Telefonszám</mat-label>
+        <input matInput mask="AAAAAAAAAAA" formControlName="telnumber" />
+        <mat-hint>A mező 9 számot tartalmazhat!</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="main_button">
+      <button (click)="addOneAddress()" class="pink_button" role="button">
+        Add the address
+      </button>
+    </div>
+  </div>
+</form>
+<app-address-goal></app-address-goal>
