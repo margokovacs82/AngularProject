@@ -6,11 +6,12 @@ import { Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, tap } from "rxjs/operators";
 
-import { Address } from "./address";
+import { Address } from "../../models/address/address.model";
 
 @Injectable()
 export class AddressService {
   address = new Subject<Address>();
+  isAddressListUpdated$ = this.address.asObservable();
 
   private headers = new Headers({ "Content-Type": "application/json" });
   private adressURL = "api/addresses"; // URL to web api
@@ -20,6 +21,31 @@ export class AddressService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Get all addresses
+   * @return addresses -  All addresses from database
+   * */
+  async loadAllAddresses() {
+    try {
+      const addresses = [];
+      await this.http
+        .get(this.adressURL)
+        .toPromise()
+        .then((a) => {
+          for (let i = 0; i < (a as Address[]).length; i++) {
+            addresses.push(a[i]);
+          }
+        });
+      return addresses;
+    } catch (error) {
+      throw "A szolgáltatás nem elérhető";
+    }
+  }
+
+  /**
+   * Get all addresses
+   * @return addresses -  All addresses from database
+   * */
   getAddresses(): Observable<Address[]> {
     return this.http
       .get<Address[]>(this.adressURL)
@@ -28,6 +54,11 @@ export class AddressService {
 
   addOneAddress(address: Address) {
     return this.http.post<Address>(this.adressURL, address, this.httpOptions);
+  }
+
+  announceselectedAddress(response: any) {
+    console.log(response);
+    this.address.next(response);
   }
 
   /**

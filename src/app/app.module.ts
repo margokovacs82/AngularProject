@@ -6,7 +6,7 @@ import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
-import { InMemoryDataService } from "./in-memory-data.service";
+import { InMemoryDataService } from "./core/services/in-memory-data/in-memory-data.service";
 import { NgModule } from "@angular/core";
 import {
   MatAutocompleteModule,
@@ -25,8 +25,9 @@ import { AppComponent } from "./app.component";
 import { AddressComponent } from "./address/address.component";
 import { ButtonComponent } from "./button/button.component";
 import { AddressGoalComponent } from "./address-goal/address-goal.component";
-import { AddressService } from "./address.service";
+import { AddressService } from "./core/services/address/address.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ShowOneAddressComponent } from "./address/show-one-address/show-one-address.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AddressComponent,
     ButtonComponent,
     AddressGoalComponent,
+    ShowOneAddressComponent,
   ],
   imports: [
     BrowserAnimationsModule,

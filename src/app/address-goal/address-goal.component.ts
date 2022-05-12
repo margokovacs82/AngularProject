@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AddressService } from "../address.service";
-//import { AddressComponent } from "../address/address.component";
+import { AddressService, Address } from "../core";
+import { AddressComponent } from "../address/address.component";
 
 import { Observable } from "rxjs";
 import { Subscription } from "rxjs";
@@ -27,7 +27,8 @@ import { Injectable } from "@angular/core";
 })
 export class AddressGoalComponent implements OnInit {
   addressGoalForm: FormGroup;
-  AllTheAddresses;
+  AllTheAddresses: Address[];
+  oneAddress: Address;
 
   constructor(
     private addressService: AddressService,
@@ -49,10 +50,16 @@ export class AddressGoalComponent implements OnInit {
         );
         this.getDataInTheForm(i);
       }
-
-      //ez is működik
-      // let addresses = this.addressService.getAddresses();
-      // addresses.subscribe((res) => console.log(res));
+    });
+    // address adatainak kinyerése
+    this.addressService.isAddressListUpdated$.pipe().subscribe((res) => {
+      this.oneAddress = res;
+      console.log("i have the response", res);
+      this.addressService.addOneAddress(this.oneAddress).subscribe((value) => {
+        this.AllTheAddresses.push(value);
+      });
+      //todo: táblázatba betöltés
+      //todo: kétszer küldi valamiért
     });
   }
 

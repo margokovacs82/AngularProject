@@ -1,7 +1,13 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { AddressService } from "../address.service";
 import { AddressGoalComponent } from "../address-goal/address-goal.component";
 
 import { Observable } from "rxjs";
@@ -16,9 +22,10 @@ import {
 
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
-import { Address } from "../address";
-
 import { Injectable } from "@angular/core";
+
+import { Address, AddressService } from "../core";
+
 @Injectable({
   providedIn: "root",
 })
@@ -28,10 +35,14 @@ import { Injectable } from "@angular/core";
   styleUrls: ["./address.component.scss"],
 })
 export class AddressComponent implements OnInit {
-  addressForm: FormGroup;
-  dataToSend: Subscription;
   addressToSend: Address;
-  AllTheAddresses;
+  AllTheAddresse: Address[] = [];
+
+  @Input()
+  addressForm: FormGroup;
+
+  @Input()
+  Address: Address;
 
   constructor(
     private addressService: AddressService,
@@ -41,38 +52,36 @@ export class AddressComponent implements OnInit {
     private addressGoalComponent: AddressGoalComponent
   ) {}
 
-  // obs = new Observable((observer) => {
-  //   console.log("Observable starts");
-  //   observer.next("1");
-  //   observer.next("2");
-  //   observer.next("3");
-  //   observer.next("4");
-  //   observer.next("5");
-  // });
-
-  // data: Subscription;
+  get lastName(): FormControl {
+    return this.addressForm.get("lastName") as FormControl;
+  }
+  get firstname(): FormControl {
+    return this.addressForm.get("firstname") as FormControl;
+  }
+  get city(): FormControl {
+    return this.addressForm.get("city") as FormControl;
+  }
+  get address1(): FormControl {
+    return this.addressForm.get("address1") as FormControl;
+  }
+  get address2(): FormControl {
+    return this.addressForm.get("address2") as FormControl;
+  }
+  get telnumber(): FormControl {
+    return this.addressForm.get("telnumber") as FormControl;
+  }
 
   ngOnInit() {
     this.buildFrom();
 
-    this.addressService.getAddresses().subscribe((res) => {
-      this.AllTheAddresses = res;
-      console.log(res);
-    });
-    // this.obs.subscribe(
-    //   (val) => {
-    //     console.log(val);
-    //   }, //next callback
-    //   (error) => {
-    //     console.log("error");
-    //   }, //error callback
-    //   () => {
-    //     console.log("Completed");
-    //   } //complete callback
-    // );
-
-    // this.data = this.obs.subscribe((value) => {
-    //   console.log("Received ");
+    // this.addressService.loadAllAddresses().then((data) => {  // itt nem is kellenek a címek mind
+    //   this.AllTheAddresse = data;
+    //   console.log("AllTheAddresse:", this.AllTheAddresse);
+    // });
+    //így is működik:
+    // this.addressService.getAddresses().subscribe((res) => {
+    //   // this.AllTheAddresses = res;
+    //   console.log(res);
     // });
   }
 
@@ -103,13 +112,32 @@ export class AddressComponent implements OnInit {
       newAddressToSend.street2 = this.addressForm.get("address2").value;
       newAddressToSend.phone = this.addressForm.get("telnumber").value;
       console.log(newAddressToSend);
-      this.addressService.addOneAddress(newAddressToSend).subscribe((value) => {
-        this.AllTheAddresses.push(value);
-      });
+      // this.addressService.addOneAddress(newAddressToSend).subscribe((value) => {
+      //   this.AllTheAddresse.push(value);
+      // });
+
+      this.addressService.announceselectedAddress(
+        new Address(
+          newAddressToSend.id,
+          newAddressToSend.name,
+          newAddressToSend.name2,
+          newAddressToSend.city,
+          newAddressToSend.street1,
+          newAddressToSend.street2,
+          newAddressToSend.phone
+        )
+      );
     }
   }
 
-  // ngOnDestroy() {
-  //   this.data.unsubscribe();
+  // static createForm(): FormGroup {
+  //   return new FormGroup({
+  //     lastName: new FormControl({ value: "" }),
+  //     firstname: new FormControl({ value: "" }),
+  //     city: new FormControl({ value: "" }),
+  //     address1: new FormControl({ value: "" }),
+  //     address2: new FormControl({ value: "" }),
+  //     telnumber: new FormControl({ value: null }),
+  //   });
   // }
 }
