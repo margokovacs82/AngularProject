@@ -52,7 +52,7 @@ export class AddressService {
       .pipe(catchError(this.handleError<Address[]>("getAddresses", [])));
   }
 
-  addOneAddress(address: Address) {
+  addOnlyOneAddress(address: Address) {
     return this.http.post<Address>(this.adressURL, address, this.httpOptions);
   }
 

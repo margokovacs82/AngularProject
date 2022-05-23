@@ -23,7 +23,6 @@ import {
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
-
 import { Address, AddressService } from "../core";
 
 @Injectable({
@@ -73,19 +72,10 @@ export class AddressComponent implements OnInit {
 
   ngOnInit() {
     this.buildFrom();
-
-    // this.addressService.loadAllAddresses().then((data) => {  // itt nem is kellenek a címek mind
-    //   this.AllTheAddresse = data;
-    //   console.log("AllTheAddresse:", this.AllTheAddresse);
-    // });
-    //így is működik:
-    // this.addressService.getAddresses().subscribe((res) => {
-    //   // this.AllTheAddresses = res;
-    //   console.log(res);
-    // });
   }
 
   buildFrom() {
+    //todo: kötelező mezők validálás
     this.addressForm = this.formBuilder.group({
       lastName: ["", [Validators.pattern(/^[a-zA-ZöüóőúéáűíÖÜÓŐÚÉÁŰÍ. -]*$/)]],
       firstname: ["", [Validators.pattern(/^[a-zA-ZöüóőúéáűíÖÜÓŐÚÉÁŰÍ. -]*$/)]],
@@ -112,9 +102,6 @@ export class AddressComponent implements OnInit {
       newAddressToSend.street2 = this.addressForm.get("address2").value;
       newAddressToSend.phone = this.addressForm.get("telnumber").value;
       console.log(newAddressToSend);
-      // this.addressService.addOneAddress(newAddressToSend).subscribe((value) => {
-      //   this.AllTheAddresse.push(value);
-      // });
 
       this.addressService.announceselectedAddress(
         new Address(

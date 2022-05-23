@@ -1,8 +1,10 @@
 <div class="title-holder">
-  <div class="title-color">
+  <div class="title-color" routerLink="/" routerLinkActive="active">
     <h1 class="title">{{ title }}</h1>
   </div>
 </div>
 <app-button></app-button>
-
+<!-- <div *ngIf="isShown">
+  <app-random-images> </app-random-images>
+</div> -->
 <router-outlet></router-outlet>

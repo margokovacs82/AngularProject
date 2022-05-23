@@ -52,15 +52,16 @@ export class AddressGoalComponent implements OnInit {
       }
     });
     // address adatainak kinyerése
-    this.addressService.isAddressListUpdated$.pipe().subscribe((res) => {
-      this.oneAddress = res;
-      console.log("i have the response", res);
-      this.addressService.addOneAddress(this.oneAddress).subscribe((value) => {
-        this.AllTheAddresses.push(value);
-      });
-      //todo: táblázatba betöltés
-      //todo: kétszer küldi valamiért
-    });
+    // this.addressService.isAddressListUpdated$.pipe().subscribe((res) => {
+    //   this.oneAddress = res;
+    //   console.log("i have the response", res);
+    //   this.addressService.addOneAddress(this.oneAddress).subscribe((value) => {
+    //     console.log(value);
+    //     this.AllTheAddresses.push(value);
+    //   });
+    //   //todo: táblázatba betöltés
+    //   //todo: kétszer küldi valamiért
+    // });
   }
 
   buildFrom() {

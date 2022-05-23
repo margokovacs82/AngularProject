@@ -54,11 +54,18 @@
   margin-top: 10px;
 }
 
+.back_button {
+  display: flex;
+  justify-content: center;
+  //padding-bottom: 30px;
+}
+
+/* CSS */
 /* CSS */
 .button-86 {
   all: unset;
   width: 150px;
-  height: 30px;
+  height: 50px;
   font-size: 16px;
   background: transparent;
   border: none;

@@ -28,6 +28,7 @@ import { AddressGoalComponent } from "./address-goal/address-goal.component";
 import { AddressService } from "./core/services/address/address.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ShowOneAddressComponent } from "./address/show-one-address/show-one-address.component";
+import { RandomImagesComponent } from "./random-images/random-images.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ShowOneAddressComponent } from "./address/show-one-address/show-one-add
     ButtonComponent,
     AddressGoalComponent,
     ShowOneAddressComponent,
+    RandomImagesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
