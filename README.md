@@ -1,8 +1,8 @@
 ### Features
 
-This is a simple application to practice a bit Angular6+.
-It works with in-memory-data service and "saves" the addresses given on the first page and shows them on the second page.
-It is still in progress and will remain in progress for a long time I think - I do it besides my everyday job.
+This is a simple application to practice a bit Angular6+ and CSS. It is a mess but it was fun to write it, to try out everything that came to my mind
+The core of the project is to "save" the addresses given in a form to an in-memory-data service and to show them on the second page. But pushing the "picture!!!" button is actually funnier than saving and watching data.
+It is still in progress - I do it besides my everyday job if I have some time or if I want to practice something (like Observables).
 
 # Angularpetproject
 

@@ -1,33 +1,35 @@
-<div class="style-table">
-  <form [formGroup]="addressGoalForm">
-    <table formArrayName="list">
-      <thead>
-        <tr>
-          <th>Vezetéknév</th>
-          <th>Keresztnév</th>
-          <th>Város</th>
-          <th>Cím 1</th>
-          <th>Cím 2</th>
-          <th>Telefonszám</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let addressItem of addressGoalForm.get('list')['controls'];
-            let i = index
-          "
-        >
-          <td [formGroupName]="i"><input formControlName="lastName" /></td>
-          <td [formGroupName]="i"><input formControlName="firstName" /></td>
-          <td [formGroupName]="i"><input formControlName="city" /></td>
-          <td [formGroupName]="i"><input formControlName="address1" /></td>
-          <td [formGroupName]="i"><input formControlName="address2" /></td>
-          <td [formGroupName]="i"><input formControlName="telnumber" /></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+<div class="table-background">
+  <div class="style-table">
+    <form [formGroup]="addressGoalForm">
+      <table formArrayName="list">
+        <thead>
+          <tr>
+            <th>Vezetéknév</th>
+            <th>Keresztnév</th>
+            <th>Város</th>
+            <th>Cím 1</th>
+            <th>Cím 2</th>
+            <th>Telefonszám</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let addressItem of addressGoalForm.get('list')['controls'];
+              let i = index
+            "
+          >
+            <td [formGroupName]="i"><input formControlName="lastName" /></td>
+            <td [formGroupName]="i"><input formControlName="firstName" /></td>
+            <td [formGroupName]="i"><input formControlName="city" /></td>
+            <td [formGroupName]="i"><input formControlName="address1" /></td>
+            <td [formGroupName]="i"><input formControlName="address2" /></td>
+            <td [formGroupName]="i"><input formControlName="telnumber" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
 </div>
 <div class="main_button">
   <button
@@ -36,6 +38,6 @@
     routerLink="/back"
     routerLinkActive="active"
   >
-    Back
+    picture!!!
   </button>
 </div>

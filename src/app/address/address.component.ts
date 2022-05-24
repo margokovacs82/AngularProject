@@ -6,9 +6,6 @@ import {
   Input,
   Output,
 } from "@angular/core";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { AddressGoalComponent } from "../address-goal/address-goal.component";
 
 import { Observable } from "rxjs";
 import { Subscription } from "rxjs";
@@ -36,7 +33,7 @@ import { Address, AddressService } from "../core";
 export class AddressComponent implements OnInit {
   addressToSend: Address;
   AllTheAddresse: Address[] = [];
-
+  isShown = false;
   @Input()
   addressForm: FormGroup;
 
@@ -47,8 +44,7 @@ export class AddressComponent implements OnInit {
     private addressService: AddressService,
     private route: ActivatedRoute,
     private location: Location,
-    private formBuilder: FormBuilder,
-    private addressGoalComponent: AddressGoalComponent
+    private formBuilder: FormBuilder
   ) {}
 
   get lastName(): FormControl {
@@ -75,7 +71,8 @@ export class AddressComponent implements OnInit {
   }
 
   buildFrom() {
-    //todo: kötelező mezők validálás
+    //TODO: kötelező mezők validálás
+
     this.addressForm = this.formBuilder.group({
       lastName: ["", [Validators.pattern(/^[a-zA-ZöüóőúéáűíÖÜÓŐÚÉÁŰÍ. -]*$/)]],
       firstname: ["", [Validators.pattern(/^[a-zA-ZöüóőúéáűíÖÜÓŐÚÉÁŰÍ. -]*$/)]],
@@ -89,8 +86,6 @@ export class AddressComponent implements OnInit {
   addOneAddress() {
     console.log(this.addressForm.value);
     let newAddressToSend = Address.getEmpty();
-
-    console.log(newAddressToSend);
 
     if (this.addressForm.invalid) {
       return;
@@ -114,8 +109,11 @@ export class AddressComponent implements OnInit {
           newAddressToSend.phone
         )
       );
+      this.isShown = true;
     }
   }
+
+  //TODO: mezők kitakarítása küldés után
 
   // static createForm(): FormGroup {
   //   return new FormGroup({

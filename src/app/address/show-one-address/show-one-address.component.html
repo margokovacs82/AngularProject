@@ -1,1 +1,54 @@
-<div>This is the new address:</div>
+<div class="main">
+  <h2 class="firstText" *ngIf="isShown">This is the new address:</h2>
+  <h2 class="firstNothing" *ngIf="!isShown">...</h2>
+
+  <form [formGroup]="newAddressForm">
+    <div *ngIf="isShown" class="address_main">
+      <div class="first_row">
+        <mat-form-field class="formfield" appearance="outline">
+          <mat-label>Vezetéknév</mat-label>
+          <input formControlName="lastName" matInput />
+        </mat-form-field>
+        <mat-form-field class="formfield" appearance="outline">
+          <mat-label>Keresztnév</mat-label>
+          <input formControlName="firstname" matInput />
+        </mat-form-field>
+      </div>
+      <div class="first_row">
+        <mat-form-field class="formfield" appearance="outline">
+          <mat-label>Város</mat-label>
+          <input formControlName="city" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="formfield" appearance="outline">
+          <mat-label>Címsor 1</mat-label>
+          <input formControlName="address1" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="formfield" appearance="outline" title="cím2">
+          <mat-label>Címsor 2</mat-label>
+          <input matInput formControlName="address2" />
+        </mat-form-field>
+      </div>
+      <div class="first_row">
+        <mat-form-field
+          class="formfield"
+          appearance="outline"
+          title="telefonszám "
+        >
+          <mat-label>Telefonszám</mat-label>
+          <input matInput formControlName="telnumber" />
+        </mat-form-field>
+
+        <button
+          class="button-86"
+          role="button"
+          routerLink="/addressGoal"
+          routerLinkActive="active"
+        >
+          Show me all the addresses
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

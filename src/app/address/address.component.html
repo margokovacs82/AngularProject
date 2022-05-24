@@ -41,17 +41,17 @@
       <button (click)="addOneAddress()" class="pink_button" role="button">
         Add the address
       </button>
+
+      <button
+        class="button-86"
+        role="button"
+        routerLink="/back"
+        routerLinkActive="active"
+      >
+        picture!!!
+      </button>
     </div>
   </div>
 </form>
-<app-show-one-address></app-show-one-address>
-<div class="back_button">
-  <button
-    class="button-86"
-    role="button"
-    routerLink="/back"
-    routerLinkActive="active"
-  >
-    Back
-  </button>
-</div>
+
+<app-show-one-address [isShown]="isShown"></app-show-one-address>

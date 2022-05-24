@@ -7,5 +7,5 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AppComponent {
   //title = "The observation of Observables";
-  title = "Just some Angular practice";
+  title = "Just some practice";
 }

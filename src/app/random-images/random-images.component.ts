@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { AddressComponent } from "../address/address.component";
 
 @Component({
   selector: "app-random-images",
@@ -7,26 +6,31 @@ import { AddressComponent } from "../address/address.component";
   styleUrls: ["./random-images.component.scss"],
 })
 export class RandomImagesComponent implements OnInit {
-  constructor(private addressComponent: AddressComponent) {}
+  constructor() {}
 
   ngOnInit() {
     this.imgRandom();
   }
 
   imgRandom() {
-    var image = document.createElement("img");
-    var imageParent = document.getElementById("img");
-    image.id = "Id";
-    image.className = "class";
+    let image = document.createElement("img");
+    let imageParent = document.getElementById("img");
 
-    let imgArray = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+    let imgArray = [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg",
+      "6.jpg",
+      "7.jpeg",
+      "8.jpg",
+    ];
     let basePath = "assets/";
-    for (var i = 0; i < imgArray.length; i++) {
-      var rand = imgArray[Math.floor(Math.random() * imgArray.length)];
-      console.log(rand);
-      var image = new Image();
-      image.src = basePath + rand;
-    }
+    let rand = imgArray[Math.floor(Math.random() * imgArray.length)];
+    console.log(rand);
+    image.src = basePath + rand;
+
     imageParent.appendChild(image);
   }
 }
